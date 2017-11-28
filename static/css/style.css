@@ -1,0 +1,131 @@
+h1  {
+    margin-BOTTOM: 0;
+    margin-TOP: 0;
+}
+
+h2  {
+    margin-BOTTOM: 0;
+    margin-TOP: 0;
+}
+
+h3  {
+    margin-TOP: 0;
+    margin-BOTTOM: 0;
+    background-color: black;
+    color: white;
+}
+
+h4  {
+    margin-TOP: 0;
+    margin-BOTTOM: 0;
+    background-color: black;
+    color: white;
+}
+
+h5  {
+    margin-TOP: 0;
+    margin-BOTTOM: 0;
+    background-color: black;
+    color: white;
+}
+
+button {
+    background: #fdd;
+}
+
+.xclearInput {
+    background: #fff;
+}
+
+#fileToLoad {
+    background: #fdd;
+}
+
+mark {
+    font-weight: bold;
+    background: #ddd
+}
+
+p {
+     margin-TOP: 0;
+     margin-BOTTOM:0;
+}
+
+body {
+    background-color: #BBB;
+}
+
+#intro {
+    margin-BOTTOM:0;
+    background-color: #fff;
+}
+
+#label {
+    background-color: red;
+}
+
+hr {
+    margin-TOP:2px;
+    margin-BOTTOM:2px;
+}
+
+table {
+    margin-TOP: 0;
+}
+
+#container {
+    width: 1200px;
+    xmargin-left: auto;
+    xmargin-right: auto;
+
+}
+
+.header img {
+    float: left;
+    width: 170px;
+    height: 40px;
+}
+
+.header h1 {
+    background-color: #ff003f;
+    color: #fff;
+    text-align: center;
+    vertical-align: bottom;
+    valign: bottom;
+    height: 40px
+ }
+
+#submit{
+    margin-TOP: 4px;
+    background-color: #faa;
+}
+
+a:link {
+    color: #faa;
+}
+
+a:visited {
+    color: faa;
+}
+
+a:hover {
+    color: yellow;
+}
+
+a:active {
+    color: faa;
+ }
+
+ .infoClass {
+    color: blue;
+    cursor: pointer;
+  }
+
+#infoId {
+    background-color: #eee;
+}
+
+.infoUL {
+    margin-BOTTOM: 0;
+    margin-TOP: 0;
+}

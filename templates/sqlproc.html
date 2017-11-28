@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SQL Processor</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <script src="{{ url_for('static', filename='js/sqlproc_submit.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/sqlproc.js') }}"></script>
+    </head>
+
+    <body>
+    <div id="container">
+        <div class="header">
+        <img src="/static/nomura3.png"  />
+        <h1>SQL Processor       </h1>
+        </div>
+
+        <div id="intro">
+            <p><b>Usage:</b> This tool can process a database query written in plain SQL, C#, VBA or any other language
+                and convert the query into tabular Excel<br> format to comprehend the overall logic of the query.
+                <span class="infoClass"> <b> For further information click here ...<b></b></span></p>
+            <div id="infoId"> Background
+            <ul class="infoUL">
+                <li>Request PS to provide input</li>
+                <li>what is supported</li>
+                <li>How to use</li>
+                <li>Setup on local machine</li>
+                <li>FAQ</li>
+                <li>etc....</li>
+                <li>etc...</li>
+            </ul>
+            </div>
+        </div>
+
+        <div id="io">
+
+            <table border=1>
+                <div id="label"><tr><td><h3>Input: SQL</h3></td>
+                    <td><h3>Output: Tabular SQL Excel Output</h3></td>  </tr>
+                </div>
+                <tr>
+                    <div id="input">
+                        <td>
+                            <textarea id="inputTextToSave" cols="85" rows="30"></textarea>
+                        </td>
+                    </div>
+
+                    <div id="output">
+                        <td>
+                            <textarea id="outputTextToSave" cols="80" rows="30"></textarea>
+                        </td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <td bgcolor="#DDD"  valign="top"><button class="clearInput"
+                         onclick="document.getElementById('inputTextToSave').value = ''">Clear Input SQL area</button>
+                        <button onclick="getExamples(1)">Example-1</button>
+                        <button onclick="getExamples(2)">Example-2</button>
+                        <button onclick="getExamples(3)">Example-3</button>
+                        <h4>Step 1: Select your input<br></h4>
+                        <mark>Option 1: </mark> <input type="file" id="fileToLoad" onchange="loadFileAsText()"><br>
+                        <mark>Option 2: </mark> Copy and paste a file in the input window above<br> <hr>
+                        <mark>Query Type:</mark>
+                              <input type="radio" name="SQLTYPE" value="sql" checked>Plain Sql
+                              <input type="radio" name="SQLTYPE" value="code">Emdedded SQL code (Java, C#, vba, python, etc...)
+                        <br>
+                        <form>
+                        <button id="submit" type="submit" class="btn btn-default"><b><u>Process Input SQL</u></b></button>
+                        </form>
+                    </td>
+
+                    <td bgcolor="#DDD" valign="top">
+                        <button  onclick="document.getElementById('outputTextToSave').value = ''">Clear Output</button>
+                        <h4>Step 2: Save your input<br></h4>
+                        <mark>Option 1: </mark> Save output result as: <input id="inputFileNameToSaveAs"></input>
+                                                    <button onclick="saveTextAsFile()">Save Text to File</button><br>
+                        <mark>Option 2:</mark>  Copy and paste a file in a an editor and save as csv.<br>
+                        <mark><u>Note:</u></mark> <br>
+                        1) If you get an error then choose "Embedded SQL code" option and 'Process .." again. <br>
+                        2) This file can be loaded in to excel for viewing.
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <br>
+        <div id="step3"><h5>Step 3: Use the <a href="/excelSQLConverter"> Excel converter program </a> to format the Excel tabular output for easy viewing.</h5> </div>
+        <br>
+        <div id="footer"> <P>Please contact the BA team for further information, suggestions and enhancement requests.</P></div>
+    </div>
+    </body>
+
+    <script>
+        function xgetExamples(value)
+        {
+            console.log(value);
+            document.getElementById('fileToLoad').value = null;
+            $.ajax({
+			    data : {
+				    input : value,
+		    	},
+			    type : 'POST',
+			    url : '/getExample'
+		        })
+		        .done(function(data) {
+		        console.log("test", data.output)
+				// $('#inputTextToSave').text(data.output)
+				document.getElementById('inputTextToSave').value = data.output
+		    });
+
+		    event.preventDefault();
+        }
+    </script>
+</html>
